@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApplication1</name>
+    </assembly>
+    <members>
+        <member name="T:WebApplication1.Controllers.Sensors.Models.PeriodContractModel">
+            <summary>
+            Модель запроса данных за период
+            </summary>
+        </member>
+        <member name="T:WebApplication1.Controllers.Sensors.Models.SensorDataContractModel">
+            <summary>
+            Модель данных сенсора
+            </summary>
+        </member>
+        <member name="T:WebApplication1.Controllers.Sensors.Models.SensorDataCreateContractModel">
+            <summary>
+            Модель для добавления значения в БД
+            </summary>
+        </member>
+        <member name="T:WebApplication1.Controllers.Sensors.Models.SummaryContractModel">
+            <summary>
+            Содель суммарного вывода
+            </summary>
+        </member>
+        <member name="T:WebApplication1.Controllers.Sensors.Models.UploadDataResponseContractModel">
+            <summary>
+            Модель ответа
+            </summary>
+        </member>
+        <member name="M:WebApplication1.Controllers.Sensors.SensorDataController.UploadData(WebApplication1.Controllers.Sensors.Models.SensorDataCreateContractModel,System.Threading.CancellationToken)">
+            <summary>
+            Принимает данные от эмулятора датчиков и сохраняет их в базе.
+            </summary>
+            <param name="model"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:WebApplication1.Controllers.Sensors.SensorDataController.GetByPeriod(WebApplication1.Controllers.Sensors.Models.PeriodContractModel,System.Threading.CancellationToken)">
+            <summary>
+            Возвращает данные за заданный период времени.
+            </summary>
+            <param name="period"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Controllers.Sensors.SensorDataController.GetSummaryByPeriod(WebApplication1.Controllers.Sensors.Models.PeriodContractModel,System.Threading.CancellationToken)">
+            <summary>
+            Возвращает агрегированные данные (среднее, максимум, минимум) за указанный период.
+            </summary>
+            <param name="period"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Controllers.Sensors.SensorDataController.ValidateData(WebApplication1.Controllers.Sensors.Models.SensorDataXmlRequestContractModel,System.Threading.CancellationToken)">
+            <summary>
+            Функционал для валидации данных, отправляемых с фронтенда в формате XML. 
+            </summary>
+            <param name="IncomingXML"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebApplication1.Data.Sensors.Repos.ISensorDataRepository">
+            <summary>
+            интерфейс репозитория сигналов с датчиков 
+            </summary>
+        </member>
+        <member name="M:WebApplication1.Data.Sensors.Repos.ISensorDataRepository.ReadAllAsync(System.Threading.CancellationToken)">
+            <summary>
+            
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Data.Sensors.Repos.SensorDataRepository.CreateAsync(WebApplication1.Data.Sensors.Models.SensorData,System.Threading.CancellationToken)">
+            <summary>
+            CREATE
+            </summary>
+            <param name="model"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Data.Sensors.Repos.SensorDataRepository.ReadAllAsync(System.Threading.CancellationToken)">
+            <summary>
+            READ all
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Data.Sensors.Repos.SensorDataRepository.ReadByIdAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            READ by id
+            </summary>
+            <param name="sensorDataId"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Data.Sensors.Repos.SensorDataRepository.UpdateAsync(WebApplication1.Data.Sensors.Models.SensorData,System.Threading.CancellationToken)">
+            <summary>
+            UPDATE
+            </summary>
+            <param name="model"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Data.Sensors.Repos.SensorDataRepository.DeleteAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            DELETE
+            </summary>
+            <param name="sensorDataId"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:WebApplication1.Data.Sensors.Repos.SensorDataRepository.GetByPeriodAsync(System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Возвращает данные за заданный период времени 
+            </summary>
+            <param name="periodBegin"></param>
+            <param name="periodEnd"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Data.Sensors.Repos.SensorDataRepository.GetSummaryByPeriodAsync(System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Возвращает агрегированные данные (среднее, максимум, минимум) за указанный период.
+            </summary>
+            <param name="periodBegin"></param>
+            <param name="periodEnd"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebApplication1.Services.Sensors.ISensorDataService">
+            <summary>
+            Интерфейс сервиса обработки данных с сенсора
+            </summary>
+        </member>
+        <member name="M:WebApplication1.Services.Sensors.ISensorDataService.UploadDataAsync(WebApplication1.Services.Sensors.Models.SensorDataCreateServiceModel,System.Threading.CancellationToken)">
+            <summary>
+            Принимает данные от эмулятора датчиков и сохраняет их в базе.
+            </summary>
+            <param name="model"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Services.Sensors.ISensorDataService.GetDataByPeriodAsync(WebApplication1.Services.Sensors.Models.PeriodServiceModel,System.Threading.CancellationToken)">
+            <summary>
+            Возвращает данные за заданный период времени.
+            </summary>
+            <param name="period"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Services.Sensors.ISensorDataService.GetSummaryAsync(WebApplication1.Services.Sensors.Models.PeriodServiceModel,System.Threading.CancellationToken)">
+            <summary>
+            Возвращает агрегированные данные (среднее, максимум, минимум) за указанный период.
+            </summary>
+            <param name="period"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Services.Sensors.ISensorDataService.ValidateDataAsync(System.Collections.Generic.List{WebApplication1.Services.Sensors.Models.xml_models.SensorDataItemXmlServiceModel},System.Threading.CancellationToken)">
+            <summary>
+            Валидирует данные с фронта в .XML
+            </summary>
+            <param name="items"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebApplication1.Services.Sensors.SensorDataService">
+            <summary>
+            Класс с бизнес-логикой для sensor-data
+            </summary>
+        </member>
+        <member name="M:WebApplication1.Services.Sensors.SensorDataService.UploadDataAsync(WebApplication1.Services.Sensors.Models.SensorDataCreateServiceModel,System.Threading.CancellationToken)">
+            <summary>
+            Принимает данные от эмулятора датчиков и сохраняет их в базе.
+            </summary>
+            <param name="model"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Services.Sensors.SensorDataService.GetDataByPeriodAsync(WebApplication1.Services.Sensors.Models.PeriodServiceModel,System.Threading.CancellationToken)">
+            <summary>
+            Возвращает данные за заданный период времени.
+            </summary>
+            <param name="period"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Services.Sensors.SensorDataService.GetSummaryAsync(WebApplication1.Services.Sensors.Models.PeriodServiceModel,System.Threading.CancellationToken)">
+            <summary>
+            Возвращает агрегированные данные (среднее, максимум, минимум) за указанный период.
+            </summary>
+            <param name="period"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Services.Sensors.SensorDataService.ValidateDataAsync(System.Collections.Generic.List{WebApplication1.Services.Sensors.Models.xml_models.SensorDataItemXmlServiceModel},System.Threading.CancellationToken)">
+            <summary>
+            Валидирует данные с фронта в .XML
+            </summary>
+            <param name="items"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+    </members>
+</doc>
